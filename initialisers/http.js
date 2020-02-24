@@ -2,20 +2,29 @@ if (!process.env.PORT) require('dotenv').config()
 
 const { createServer } = require('http')
 
-const serveStaticFile = require('../lib/responder')
+const { serveStaticFile, serveRoute } = require('../lib/responder')
 const errors = require('../config/error')
 
 const { PORT, APP_NAME } = process.env
 
 module.exports = () => {
-  const server = createServer(async ({ url }, response) => {
-    const urlTokens = url.split('.')
+  const server = createServer(async (request, response) => {
+    const urlTokens = request.url.split('.')
     const extension = urlTokens.length > 1 ? `${urlTokens[urlTokens.length - 1].toLowerCase().trim()}` : false
-    const isRoot = ['','/'].indexOf(url) > -1
-    const path = isRoot ? '/index.html' : url 
+    const serveResponse = extension ? serveStaticFile : serveRoute 
+    const responseParams = { path: request.url }
+
+    if (extension) {
+      responseParams.extension = extension
+    } else {
+      responseParams.request = request
+      responseParams.context = {
+        app_name: APP_NAME
+      }
+    }
 
     try {
-      return await serveStaticFile({ file: path, extension: isRoot ? 'html' : extension }, response)
+      return await serveResponse(responseParams, response)
     } catch (error) {
       console.error(error)
       const errorData = errors(error)
@@ -26,6 +35,19 @@ module.exports = () => {
         statusCode: errorData.code
       }, response)
     }
+
+  try {
+    return await serveStaticFile({ file: path, extension: isRoot ? 'html' : extension }, response)
+  } catch (error) {
+    console.error(error)
+    const errorData = errors(error)
+
+    return await serveStaticFile({
+      file: '/error.html',
+      extension: 'html',
+      statusCode: errorData.code
+    }, response)
+  }
   })
 
   server.on('error', error => {
