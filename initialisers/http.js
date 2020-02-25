@@ -35,19 +35,6 @@ module.exports = () => {
         statusCode: errorData.code
       }, response)
     }
-
-  try {
-    return await serveStaticFile({ file: path, extension: isRoot ? 'html' : extension }, response)
-  } catch (error) {
-    console.error(error)
-    const errorData = errors(error)
-
-    return await serveStaticFile({
-      file: '/error.html',
-      extension: 'html',
-      statusCode: errorData.code
-    }, response)
-  }
   })
 
   server.on('error', error => {
