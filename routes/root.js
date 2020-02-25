@@ -1,2 +1,2 @@
-exports uri = '/'
-exports template = 'root'
+exports.uri = '/'
+exports.template = 'root'

@@ -17,5 +17,9 @@
     "glob": "^7.1.6",
     "handlebars": "^4.7.3",
     "mime-types": "^2.1.26"
+  },
+  "homepage": "https://github.com/mtimofiiv/remind.ist#readme",
+  "engines": {
+    "node": ">=12"
   }
 }
