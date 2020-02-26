@@ -85,3 +85,6 @@ typings/
 
 .DS_Store
 .env
+
+# This file not need to track
+package-lock.json
