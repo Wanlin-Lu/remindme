@@ -1,3 +1,8 @@
 const server = require('./initialisers/http')
+const db = require('./initialisers/postgres')
 
-server()
+const run = () => {
+  server({ db })
+}
+
+run()

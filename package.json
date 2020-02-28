@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect -e js,html"
+    "start": "nodemon --inspect -e js,html,hbs,sql"
   },
   "author": "\"Luwanlin\"",
   "license": "ISC",
@@ -14,9 +14,11 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "@frameworkless/bodyparser": "^1.0.1",
     "glob": "^7.1.6",
     "handlebars": "^4.7.3",
-    "mime-types": "^2.1.26"
+    "mime-types": "^2.1.26",
+    "pg": "^7.18.2"
   },
   "homepage": "https://github.com/mtimofiiv/remind.ist#readme",
   "engines": {
