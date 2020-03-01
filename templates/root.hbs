@@ -1,21 +1,30 @@
-<div class="image"><img src="/favicon-32x32.png"></div>
+<div class="masthead">
+    <section>
+        <h1>Email future you, today.</h1>
+    </section>
+</div>
 
-<h1>
-    {{app_name}} is here
-</h1>
-
-<form action="/new" method="POST">
-    <div>
-        <input type="email" name="email" id="email" placeholder="your email">
+<section>
+    <div class="box">
+        <p class="leadin">
+            Ever wanted to remind yourself of something, out of the blue? Let {{app_name}} do it for you:
+        </p>
+        <form action="/new" method="POST">
+            <div>
+                <input type="email" name="email" id="email" placeholder="your email">
+            </div>
+            <div>
+                <input type="datetime-local" name="send_at" id="send_at" placeholder="send when?" class="flatpickr">
+            </div>
+            <div>
+                <textarea name="message" id="message" cols="50" rows="10" placeholder="type your message to yourself"></textarea>
+            </div>
+            <div>
+                <button class="button" type="submit">Submit</button>
+                <p>
+                    No spam, no harvesting. Besides the email you asked for, you will never hear from me ever again – even your message to yourself gets deleted after its sent.
+                </p>
+            </div>
+        </form>
     </div>
-    <div>
-        <textarea name="message" id="message" cols="50" rows="10" placeholder="type your message to yourself"></textarea>
-    </div>
-    <div>
-        <input type="date" id="send_at" name="send_at">
-    </div>
-
-    <div>
-        <button type="submit">Send this to me!</button>
-    </div>
-</form>
+</section>

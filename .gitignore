@@ -88,3 +88,5 @@ typings/
 
 # This file not need to track
 package-lock.json
+public/app.js
+public/style.css
