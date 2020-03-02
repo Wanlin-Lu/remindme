@@ -28,6 +28,7 @@
     "flatpickr": "^4.6.3",
     "glob": "^7.1.6",
     "handlebars": "^4.7.3",
+    "mailgun-js": "^0.22.0",
     "mime-types": "^2.1.26",
     "pg": "^7.18.2",
     "postcss": "^7.0.27",
